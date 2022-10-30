@@ -9,7 +9,7 @@ docker build --tag skeres95250/spring-api:v1.0 --file ./Dockerfile .
 ```
 
 ```
-docker image push skeres95250/spring-api:v1.0
+docker image push skeres95250/spring-api:v1.01
 ```
 
 ### Create deployment
@@ -54,5 +54,8 @@ minikube ip
 ### Test running application : curl or browser request clusterIP/service port
 `curl http://192.168.49.2:31747`  
 `curl http://192.168.49.2:31747/listeEtudiants`  
+
+### Wget to standard output : example
+`wget -O - http://10.104.246.237:8282/listeEtudiants`
 
 

@@ -5,16 +5,17 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: spring-api-k8s
+      app: spring-api-k8s-selector
   replicas: 1
   template:
     metadata:
       labels:
-        app: spring-api-k8s
+        app: spring-api-k8s-selector
     spec:
       containers:
         - name: spring-api-k8s-container
           image: skeres95250/spring-api:v1.0  # Image that will be used to containers in the cluster
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
+          #imagePullPolicy: IfNotPresent      # Uncomment this line to pull just once
           ports:
-            - containerPort: 8282  # The port that the container is running on in the cluster
+            - containerPort: 8282             # The port that the container is running on in the cluster

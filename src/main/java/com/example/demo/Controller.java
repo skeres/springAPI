@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @RestController
@@ -25,7 +28,9 @@ public class Controller {
 
     @RequestMapping("/")
     public String helloWorld(){
-        return "Hello World from Spring Boot";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
+        Calendar calendar = new GregorianCalendar();
+        return "Hello World from Spring Boot ! Current datetime is " +sdf.format(calendar.getTime());
     }
 
     @RequestMapping("/listeEtudiants")
