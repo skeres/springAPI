@@ -46,7 +46,7 @@ kubectl delete service springboot-k8s-svc
 kubectl get nodes -o wide
 ```
 
-*Alternative on minikube o get local IP of minikube*      
+*Alternative to get local IP of minikube*      
 ```
 minikube ip
 ```
