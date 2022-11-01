@@ -1,6 +1,8 @@
 package com.example.demo;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin(origins= {"*"})
 public class Controller {
 
     @Autowired
@@ -20,17 +23,14 @@ public class Controller {
         this.etudiantRepository = etudiantRepository;
     }
 
-    /*
-    public Controller(EtudiantRepository etudiantRepository) {
-        this.etudiantRepository = etudiantRepository;
-    }
-    */
-
     @RequestMapping("/")
     public String helloWorld(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
         Calendar calendar = new GregorianCalendar();
-        return "Hello World from Spring Boot ! Current datetime is " +sdf.format(calendar.getTime());
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("value", "Hello World from Spring Boot ! Current datetime is "
+                        + sdf.format(calendar.getTime()));
+        return jsonObject.toString();
     }
 
     @RequestMapping("/listeEtudiants")
