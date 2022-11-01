@@ -9,7 +9,7 @@ docker build --tag skeres95250/spring-api:v1.0 --file ./Dockerfile .
 ```
 
 ```
-docker image push skeres95250/spring-api:v1.01
+docker image push skeres95250/spring-api:v1.0
 ```
 
 ### Create deployment
