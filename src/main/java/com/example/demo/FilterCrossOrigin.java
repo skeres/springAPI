@@ -18,6 +18,7 @@ public class FilterCrossOrigin extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
         httpServletResponse.addHeader("Access-Control-Allow-Origin", "*");
+        httpServletResponse.addHeader("sks-personal-springboot-header", "going through springboot filter");
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }

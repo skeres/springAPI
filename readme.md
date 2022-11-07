@@ -56,6 +56,12 @@ minikube ip
 `curl http://192.168.49.2:31747/listeEtudiants`  
 
 ### Wget to standard output : example
-`wget -O - http://10.104.246.237:8282/listeEtudiants`
+`wget -S -O - http://10.104.246.237:8282/listeEtudiants`
 
 
+### >>> adapt to kubernetes
+
+docker build --tag skeres95250/spring-api:v1.0 --file ./Dockerfile .
+docker image push skeres95250/spring-api:v1.0
+kubectl apply -f Service.yml
+kubectl apply -f Deployment.yml

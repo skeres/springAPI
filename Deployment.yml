@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-k8s
+  name: spring-boot-k8s-deployment
+  labels:
+    tag: deployment
 spec:
   selector:
     matchLabels:
@@ -18,4 +20,4 @@ spec:
           imagePullPolicy: Always
           #imagePullPolicy: IfNotPresent      # Uncomment this line to pull just once
           ports:
-            - containerPort: 8282             # The port that the container is running on in the cluster
+            - containerPort: 8383             # The port that the container expose in the cluster pod
