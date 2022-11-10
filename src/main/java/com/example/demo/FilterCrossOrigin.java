@@ -17,8 +17,13 @@ public class FilterCrossOrigin extends OncePerRequestFilter {
                                     HttpServletResponse httpServletResponse,
                                     FilterChain filterChain)
             throws ServletException, IOException {
+
+        String headerFromNginx=httpServletRequest.getHeader("sks-personal-nginx-header-2");
+        System.out.println(">>> headerFromNginx="+headerFromNginx);
+
         httpServletResponse.addHeader("Access-Control-Allow-Origin", "*");
         httpServletResponse.addHeader("sks-personal-springboot-header", "going through springboot filter");
+        httpServletResponse.addHeader("sks-personal-nginx-header-2", headerFromNginx);
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }
