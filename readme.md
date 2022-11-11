@@ -58,9 +58,17 @@ minikube ip
 ### Wget to standard output : example
 `wget -S -O - http://10.104.246.237:8282/listeEtudiants`
 
+### >>> adapt to local deployment for Docker
+mvn clean install
+docker build --tag local/spring-api:v1.0 --file ./Dockerfile .
+docker stop my_running_springAPI && docker rm my_running_springAPI
+docker run -dit --name my_running_springAPI -p 8383:8383 local/spring-api:v1.0
+docker logs my_running_springAPI
+curl -v http://localhost:8383/api/
+curl -v http://localhost:8383/api/listeEtudiants
 
 ### >>> adapt to kubernetes
-
+mvn clean install
 docker build --tag skeres95250/spring-api:v1.0 --file ./Dockerfile .
 docker image push skeres95250/spring-api:v1.0
 kubectl apply -f Service.yml

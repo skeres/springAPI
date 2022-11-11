@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,15 @@ import java.util.Date;
 //implements CommandLineRunner permet de lancer des commandes spécifique au demarrage de l'application.
 //exemple : insérer des données dans une table
 public class DemoApplication implements CommandLineRunner {
+
+	//@Value("${logging.path}")
+	//private String loggingPath;
+
+	@Value("${logging.file.name}")
+	private String loggingFileName;
+
+	@Value("${server.port}")
+	private String serverPort;
 
 	@Autowired  //permet d'injecter au runtime une implémentation de cette interface
 	private EtudiantRepository etudiantRepository;
@@ -27,6 +37,10 @@ public class DemoApplication implements CommandLineRunner {
 		etudiantRepository.save(new Etudiant(null,"p","phil",new Date()));
 		etudiantRepository.save(new Etudiant(null,"j","jessica",new Date()));
 		etudiantRepository.save(new Etudiant(null,"z","jessica",new Date()));
+
+		System.out.println(">>> serverPort ="+serverPort);
+		//System.out.println(">>> loggingPath ="+loggingPath);
+		System.out.println(">>> loggingPFile ="+loggingFileName);
 
 	}
 }
