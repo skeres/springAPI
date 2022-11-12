@@ -73,3 +73,17 @@ docker build --tag skeres95250/spring-api:v1.0 --file ./Dockerfile .
 docker image push skeres95250/spring-api:v1.0
 kubectl apply -f Service.yml
 kubectl apply -f Deployment.yml
+
+
+### >>> helm for kubernetes
+helm create backend : create tree of helm files
+helm template ./helm/backend : show yml files that will be generated
+helm install my-helm-backend --debug --dry-run ./helm/backend : to simulate a deployment
+helm install my-helm-backend ./helm/backend : to remove deployment from cluster
+helm uninstall my-helm-backend
+
+For debugging, create a busybox POD and ssh into it
+kubectl run -i --tty --rm debug --image=busybox --restart=Never
+kubectl exec -it debug -- sh
+inside the pod : wget -S -O - http://springboot-k8s-svc:8484/api/listeEtudiants
+kubectl delete -n default pod debug
