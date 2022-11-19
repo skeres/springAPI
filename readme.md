@@ -79,11 +79,11 @@ kubectl apply -f Deployment.yml
 helm create backend : create tree of helm files
 helm template ./helm/backend : show yml files that will be generated
 helm install my-helm-backend --debug --dry-run ./helm/backend : to simulate a deployment
-helm install my-helm-backend ./helm/backend : to remove deployment from cluster
-helm uninstall my-helm-backend
+helm install my-helm-backend ./helm/backend 
+helm uninstall my-helm-backend  : to remove deployment from cluster
 
 For debugging, create a busybox POD and ssh into it
-kubectl run -i --tty --rm debug --image=busybox --restart=Never
+kubectl run -i --tty debug --image=busybox --restart=Never -- sh
 kubectl exec -it debug -- sh
 inside the pod : wget -S -O - http://springboot-k8s-svc:8484/api/listeEtudiants
 kubectl delete -n default pod debug
